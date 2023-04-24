@@ -7,8 +7,8 @@
 }
 
 ::-webkit-scrollbar-track {
-  /* background: var(--dark-color);  */
-  @apply bg-dark;
+  background: var(--dark-color); 
+  /* @apply bg-dark; */
 }
 ::-webkit-scrollbar-thumb {
   /* background: var(--accent-color);  */

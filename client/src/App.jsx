@@ -1,41 +1,27 @@
-import PanelButton from "./components/PanelButton";
-import Card from "./components/Card";
-import ProfileDisplay from "./components/ProfileDisplay";
-import Feed from "./components/Feed";
+import LeftSideBar from "./components/LeftSidebar/LeftSideBar";
+import Home from "./components/Home/Home";
+import {FollowingFeed,ForYouFeed} from "./components/Home/Feed";
+import Explore from "./components/Explore/Explore";
+import Profile from "./components/Profile/Profile";
+import NotFound from "./components/NotFound";
+
+import {Route,Routes} from 'react-router-dom';
 
 function App()
 {
   return(
-    <div className="text-light bg-darker flex px-20 w-screen h-screen overflow-hidden">
-      <div className="w-80 flex flex-col shrink-0">
-        <Card className='grow'>
-          <img className="p-6 mb-4" src="src/assets/LOGO.png" alt="" />
-          <div className="flex flex-col grow-[.25]">
-            <PanelButton icon='home' label='HOME'/>
-            <PanelButton icon='search' label='EXPLORE'/>
-            <PanelButton icon='account_circle' label='PROFILE'/>
-          </div>
-        </Card>
-        <Card>
-          <h1 className="text-light/25 mb-2">Buzzing As</h1>
-          <ProfileDisplay></ProfileDisplay>
-        </Card>
+      <div className="text-light bg-darker flex justify-between w-screen h-screen overflow-hidden">
+      <LeftSideBar className=""></LeftSideBar>
+      <Routes>
+        <Route path="/home/following" element={<Home className='grow'><FollowingFeed/></Home>}/>
+        <Route path="/home/foryou" element={<Home className='grow'><ForYouFeed/></Home>}/>
+        <Route path="/explore" element={<Explore className='grow'></Explore>}/>
+        <Route path="/profile" element={<Profile className='grow'></Profile>}/>
+        <Route path="*" element={<NotFound className='grow'></NotFound>}/>
+      </Routes>
+      <LeftSideBar className="hidden xl:block"></LeftSideBar>
       </div>
-      <div className="grow">
-        <Feed></Feed>
-      </div>
-      <div className="w-80 shrink-0">
-        <Card>
-          <div>
-              <input type="text" name="" id="" className="w-full p-2 bg-darker outline-none my-6" placeholder="Search Buzzup"/>
-          </div>
-        </Card>
-        <Card className>
-
-        </Card>
-      </div>
-    </div>
   );
 }
 
-export default App
+export default App;
