@@ -1,26 +1,17 @@
-import LeftSideBar from "./components/LeftSidebar/LeftSideBar";
-import Home from "./components/Home/Home";
-import {FollowingFeed,ForYouFeed} from "./components/Home/Feed";
-import Explore from "./components/Explore/Explore";
-import Profile from "./components/Profile/Profile";
-import NotFound from "./components/NotFound";
+import MainApp from './Pages/MainApp';
+import LoginPage from './Pages/LoginPage';
 
 import {Route,Routes} from 'react-router-dom';
+import SignUp from './Pages/SignUp';
 
 function App()
 {
   return(
-      <div className="text-light bg-darker flex justify-between w-screen h-screen overflow-hidden">
-      <LeftSideBar className=""></LeftSideBar>
-      <Routes>
-        <Route path="/home/following" element={<Home className='grow'><FollowingFeed/></Home>}/>
-        <Route path="/home/foryou" element={<Home className='grow'><ForYouFeed/></Home>}/>
-        <Route path="/explore" element={<Explore className='grow'></Explore>}/>
-        <Route path="/profile" element={<Profile className='grow'></Profile>}/>
-        <Route path="*" element={<NotFound className='grow'></NotFound>}/>
-      </Routes>
-      <LeftSideBar className="hidden xl:block"></LeftSideBar>
-      </div>
+    <Routes>
+      <Route path="/login" element={<LoginPage></LoginPage>}/>
+      <Route path="/signup" element={<SignUp></SignUp>}/>
+      <Route path="/*" element={<MainApp></MainApp>}/>
+    </Routes>
   );
 }
 

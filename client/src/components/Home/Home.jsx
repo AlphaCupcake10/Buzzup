@@ -4,7 +4,7 @@ import {Link,Route,Routes} from 'react-router-dom';
 function Home(props)
 {
     return(
-        <div className={`${props.className}`}>
+        <div className={`${props.className} grow`}>
             <div className="flex justify-evenly p-8 md:text-xl">
                 <Link to='/home/following'><h1 className="hover:text-accent transition-color cursor-pointer">FOLLOWING</h1></Link>
                 <div>|</div>

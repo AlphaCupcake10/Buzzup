@@ -1,8 +1,9 @@
-function Explore()
+import CardContainer from '../CardContainer'
+function Explore(props)
 {
     return(
-        <div>
-            EXPLORE
+        <div className={`${props.className}`}>
+            <CardContainer>EXPLORE</CardContainer>
         </div>
     )
 }
