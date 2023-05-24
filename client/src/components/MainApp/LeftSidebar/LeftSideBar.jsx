@@ -1,12 +1,12 @@
-import CardContainer from "../CardContainer";
-
+import CardContainer from "../../Common/CardContainer";
+import logo from "../../../assets/LOGO.png";
 import { Link } from "react-router-dom";
 
 function LeftSideBar(props)
 {
     return (
         <CardContainer className={`w-16 md:w-80 md:p-6 ${props.className}`}>
-            <img className="p-6 mb-4 hidden md:block" src="src/assets/LOGO.png" alt="" />
+            <img className="p-6 mb-4 hidden md:block" src={logo} alt="" />
             <div>
                 <Link to='/home/following'><LeftSidebarButton icon='home' label='HOME'/></Link>
                 <Link to='/explore'><LeftSidebarButton icon='search' label='EXPLORE'/></Link>
