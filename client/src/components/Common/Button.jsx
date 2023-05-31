@@ -7,7 +7,7 @@ function Button(props)
     }
     return(
         <div className="mt-6">
-            <button className="w-full rounded-xl p-3 bg-accent font-bold">{label}</button>
+            <button className="w-full rounded-xl p-3 bg-accent font-bold hover:shadow-sm shadow-accent active:bg-accent/75">{label}</button>
         </div>
     )
 }

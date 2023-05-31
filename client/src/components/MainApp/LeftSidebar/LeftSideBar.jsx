@@ -8,9 +8,9 @@ function LeftSideBar(props)
         <CardContainer className={`w-16 md:w-80 md:p-6 ${props.className}`}>
             <img className="p-6 mb-4 hidden md:block" src={logo} alt="" />
             <div>
-                <Link to='/home/following'><LeftSidebarButton icon='home' label='HOME'/></Link>
-                <Link to='/explore'><LeftSidebarButton icon='search' label='EXPLORE'/></Link>
-                <Link to='/profile'><LeftSidebarButton icon='account_circle' label='PROFILE'/></Link>
+                <Link to='/app/home'><LeftSidebarButton icon='home' label='HOME'/></Link>
+                <Link to='/app/explore'><LeftSidebarButton icon='search' label='EXPLORE'/></Link>
+                <Link to='/app/profile'><LeftSidebarButton icon='account_circle' label='PROFILE'/></Link>
             </div>
         </CardContainer>
     )
