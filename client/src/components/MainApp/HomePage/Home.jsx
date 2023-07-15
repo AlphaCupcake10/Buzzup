@@ -1,4 +1,3 @@
-import {FollowingFeed,ForYouFeed} from "./Feed";
 import {Link,Route,Routes} from 'react-router-dom';
 
 function Home(props)

@@ -1,14 +1,6 @@
-function FollowingFeed()
+export default function Feed()
 {
     return(
-        <div>Following FEED</div>
+        <h1>feed</h1>
     )
 }
-
-function ForYouFeed()
-{
-    return(
-        <div>For You FEED</div>
-    )
-}
-export {FollowingFeed,ForYouFeed};
