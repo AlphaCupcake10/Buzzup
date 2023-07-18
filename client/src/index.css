@@ -4,18 +4,44 @@
 @tailwind utilities;
 
 @layer base {
+  .pattern
+  {
+    background: radial-gradient(circle at top left,transparent 9%, #faa214 10% ,#faa214 15% , transparent 16%) , radial-gradient(circle at bottom left,transparent 9%, #faa214 10% ,#faa214 15% , transparent 16%), radial-gradient(circle at top right ,transparent 9%, #faa214 10% ,#faa214 15% , transparent 16%) , radial-gradient(circle at bottom right,transparent 9%, #faa214 10% ,#faa214 15% , transparent 16%),radial-gradient(circle, transparent 25%, #faad14  26%),linear-gradient(0deg, transparent 44%, #faa214 45%, #faa214 55%, transparent 56%), linear-gradient(90deg, transparent 44%, #faa214 45%, #faa214 55%, transparent 56%);
+    background-size: 2em 2em;
+    background-color: #faad14;
+    opacity: 1
+  }
+  .material-icons
+  {
+    @apply select-none;
+  }
   *
   {
-    transition: all 200ms cubic-bezier(.1,0,.06,1);
+    /* outline: #faa214 solid; */
+    box-sizing: border-box;
   }
   html {
+    @apply overflow-y-hidden;
     @apply bg-darker;
+    @apply text-light;
     font-family: 'Inter', sans-serif;
   }
-
+  .card
+  {
+    @apply bg-dark;
+    @apply p-4;
+    @apply md:p-6;
+    @apply m-1;
+    @apply border-2;
+    @apply border-white/10;
+    @apply hover:border-white/20;
+    @apply transition-colors;
+    @apply duration-500;
+    @apply rounded-lg;
+  }
 }
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 2px;
   height: 5px;
 }
 
@@ -24,6 +50,7 @@
   /* @apply bg-dark; */
 }
 ::-webkit-scrollbar-thumb {
+  @apply rounded-full;
   /* background: var(--accent-color);  */
   @apply bg-accent;
 }

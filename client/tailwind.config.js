@@ -9,14 +9,16 @@ export default {
     extend: {
       colors:
       {
-        accent:'#FFBA09',
+        accent:'#faa214',
+        liked:'#fa2852',
         dark:'#1F1E1D',
         darker:'#181715',
         light:'#F5F5F5'
       },
       colorsLight:
       {
-        accent:'#FFBA09',
+        accent:'#faa214',
+        liked:'#fa2852',
         dark:'#FFFFFF',
         darker:'#F5F5F5',
         light:'#1F1E1D'
