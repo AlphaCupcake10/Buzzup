@@ -2,8 +2,9 @@ import ProfileCard , { ProfileCardType } from "../Common/ProfileCard";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Contexts/AuthContext";
-import Post ,{PostType} from "../Common/Post";
 import { useToast } from "../../Contexts/ToastContext";
+import PostArray from "../Common/Post/PostArray";
+import LoginPromptCard from "../Common/LoginPromptCard";
 
 export default function ProfilePage()
 {
@@ -11,24 +12,18 @@ export default function ProfilePage()
     const auth = useAuth();
     const toast = useToast();
     const [profileData,setProfileData] = useState<ProfileCardType>(null);
-    const [postData,setPostData] = useState<PostType[]>([]);
 
     useEffect(()=>{
-        console.log("changed");
         getUser();
     },[id])
 
-    useEffect(()=>{
-        if(profileData)
-            getPosts();
-    },[profileData]);
-    
     async function getUser()
     {
         let response = await auth?.APIFunctions.GetRequest(`user/${id}`,auth?.isAuthorized);
         if(response?.status == 200)
         {
             let profileData:ProfileCardType = response.data.data;
+            console.log(profileData?.id);
             setProfileData(profileData);
         }
         else if(response?.status == 404)
@@ -42,21 +37,13 @@ export default function ProfilePage()
             setProfileData(null);
         }
     }
-    async function getPosts()
-    {
-        //TODO LIMIT POSTS FOR NOT AUTH
-        let response = await auth?.APIFunctions.GetRequest(`/buzzes/${profileData?.id}/?start=0&limit=10`,auth.isAuthorized);
-        console.log(response);
-        if(response?.data?.data)
-            setPostData(response?.data?.data);
-    }
 
     return(
         <div className="overflow-y-auto overflow-x-hidden h-full">
             <ProfileCard data={profileData}/>
-            {
-                postData?.map((data,index)=><Post key={index} data={data}/>)
-            }
+            {(profileData?.id == undefined) || <PostArray limit={auth?.isAuthorized?undefined:0} route={`/buzzes/${profileData?.id}`}>{
+                auth?.isAuthorized || <LoginPromptCard/>
+            }</PostArray>}
         </div>
     )
 }

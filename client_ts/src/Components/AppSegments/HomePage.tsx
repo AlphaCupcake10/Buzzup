@@ -1,5 +1,6 @@
 import { useRef , useState } from "react";
 import CreateBuzzCard from "../Common/CreateBuzzCard";
+import LoginPromptCard from "../Common/LoginPromptCard";
 
 export default function HomePage()
 {
@@ -24,6 +25,13 @@ export default function HomePage()
                 <div>FOLLOWING</div>
             </div>
             <div id='scrollArea' ref={scrollAreaRef} onScroll={scrolled} className={`grow overflow-auto transition-all`}>
+                <LoginPromptCard className=' hidden md:block'/>
+                <LoginPromptCard className=' hidden md:block'/>
+                <LoginPromptCard className=' hidden md:block'/>
+                <LoginPromptCard className=' hidden md:block'/>
+                <LoginPromptCard className=' hidden md:block'/>
+                <LoginPromptCard className=' hidden md:block'/>
+                <LoginPromptCard className=' hidden md:block'/>
             </div>
         </div>
     )

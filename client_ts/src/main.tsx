@@ -1,19 +1,14 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
-import { AuthProvier } from './Contexts/AuthContext.tsx';
-import { ToastProvier } from './Contexts/ToastContext.tsx';
+import LandingPage from './Components/Pages/LandingPage/LandingPage.tsx';
+import Soon from './Components/Pages/LandingPage/Soon.tsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ToastProvier>
-        <AuthProvier>
-          <App /> 
-        </AuthProvier>
-      </ToastProvier>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/*" element={<LandingPage/>}/>
+      <Route path="/soon" element={<Soon/>}/>
+    </Routes>
+  </BrowserRouter>
 )

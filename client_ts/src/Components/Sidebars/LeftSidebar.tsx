@@ -2,7 +2,7 @@ import { useAuth } from '../../Contexts/AuthContext';
 import logo from '../../assets/Logo/LogoNavbar.png';;
 import User from '../Common/User';
 import { Link,NavLink } from "react-router-dom";
-import Button from '../Common/Button';
+import LoginPromptCard from '../Common/LoginPromptCard';
 
 type SideBarButtonProps = {icon:string,label:string,to:string};
 function SideBarButton({icon,label,to}:SideBarButtonProps)
@@ -58,13 +58,7 @@ export default function LeftSidebar()
                         {/* <SideBarButton to='/settings' icon='settings' label='SETTINGS'></SideBarButton> */}
                     </div>
                 </div>
-                <div className="card hidden md:block">
-                    <h1 className='text-light/50 mb-2'>You are not Signed In</h1>
-                    <div className='flex flex-col gap-4 p-4'>
-                        <Link to='/signin'><Button big className='w-full'>SIGN IN</Button></Link>
-                        <Link to='/signup'><Button big outline className='w-full'>SIGN UP</Button></Link>
-                    </div>
-                </div>
+                <LoginPromptCard className=' hidden md:block'/>
             </div>
         )
     }

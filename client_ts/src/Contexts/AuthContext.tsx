@@ -18,8 +18,8 @@ type AuthContextType = {
         SignIn:(email:string,password:string)=>Promise<boolean>,
         SignUp:(email:string,password:string,name:string,username:string)=>Promise<boolean>,
         SignOut:()=>void,
-        PostRequest:(url:string,body:any,needsToken:boolean)=>Promise<any>,
-        GetRequest:(url:string,needsToken:boolean)=>Promise<any>
+        PostRequest:(url:string,body:any,needsToken:boolean,params?:any)=>Promise<any>,
+        GetRequest:(url:string,needsToken:boolean,params?:any)=>Promise<any>
     }
 }
 
@@ -113,18 +113,18 @@ export function AuthProvier(props:{children:React.ReactNode})
         localStorage.removeItem("userdata");
         toast?.CreateToast({body:"Visit again soon.",mode:"Success",title:"Sign out Successful"});
     }
-    async function GetRequest(url:string,sendToken:boolean)
+    async function GetRequest(url:string,sendToken:boolean,params?:any)
     {
         let response:AuthResponseType;
         try
         {
             if(sendToken)
             {
-                response = await axios.get(url,{headers:{"x-access-token":userdata?.token}})
+                response = await axios.get(url,{headers:{"x-access-token":userdata?.token},params:params})
             }
             else
             {
-                response = await axios.get(url);
+                response = await axios.get(url,{params:params});
             }
         }
         catch(e:any)
@@ -133,7 +133,7 @@ export function AuthProvier(props:{children:React.ReactNode})
         }
         return response;
     }
-    async function PostRequest(url:string,body:any,needsToken:boolean)
+    async function PostRequest(url:string,body:any,needsToken:boolean,params?:any)
     {
         let response:AuthResponseType;
 
@@ -141,11 +141,11 @@ export function AuthProvier(props:{children:React.ReactNode})
         {
             if(needsToken && isAuthorized)
             {
-                response = await axios.post(url,body,{headers:{"x-access-token":userdata?.token}});
+                response = await axios.post(url,body,{headers:{"x-access-token":userdata?.token},params:params});
             }
             else
             {
-                response = await axios.post(url,body);
+                response = await axios.post(url,body,{params:params});
             }   
         }
         catch(e:any)

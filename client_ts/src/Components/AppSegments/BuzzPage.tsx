@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import Post, { PostType } from '../Common/Post';
+import SinglePost from '../Common/Post/SinglePost';
 import {BuzzComment, BuzzCommentType} from '../Common/Comments';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../../Contexts/AuthContext';
+import { PostType } from '../Common/Post/Post';
 
 export default function BuzzPage()
 {
@@ -51,10 +52,10 @@ export default function BuzzPage()
 
     return(
         <div className='overflow-y-auto overflow-x-hidden h-full'>
-            <Post data={data}>
-                <div className='mt-4'>
-                    <hr className='border border-light/10' />
-                    <form onSubmit={postComment} className='flex  mt-4'>
+            <SinglePost  isSinglePost data={data}>
+                <div className=''>
+                    {/* <hr className='border border-light/10' /> */}
+                    <form onSubmit={postComment} className='flex'>
                         <input value={bodyText} onChange={e=>{setBodyText(e.target.value);}} placeholder="Post a Comment" className='w-full bg-darker overflow-hidden p-4 outline-none resize-none focus:border-b-accent border-b-light/10 border-b-2 transition-colors duration-500 rounded-tl-lg'></input>
                         <button className='bg-accent px-4 py-2 rounded-e-lg font-black hover:brightness-95 active:scale-95 transition-transform duration-300 flex items-center'><span className="material-icons">send</span></button>
                     </form>
@@ -64,7 +65,7 @@ export default function BuzzPage()
                         return <BuzzComment key={index} commentData={value}/>
                     })
                 }
-            </Post>
+            </SinglePost>
         </div>
     )
 }
